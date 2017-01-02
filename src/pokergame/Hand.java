@@ -9,6 +9,11 @@ import java.util.ArrayList;
 public class Hand implements Comparable<Hand>
 {
     private ArrayList<Card> cards = new ArrayList<Card>();
+    
+    public Hand()
+    {
+        
+    }
 
     @Override
     public int compareTo(Hand t)

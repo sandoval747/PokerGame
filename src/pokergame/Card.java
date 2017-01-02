@@ -13,4 +13,9 @@ public class Card
     
     private Suit suit;
     private int value;
+    
+    public Card()
+    {
+        
+    }
 }

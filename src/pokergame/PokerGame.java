@@ -18,6 +18,7 @@ public class PokerGame
         String response;
         
         System.out.println("Welcome to Poker Game.");
+        System.out.println("");
         System.out.println("What would you like to do?");
         System.out.println("New Game (N), Exit (X)");
         
@@ -27,14 +28,19 @@ public class PokerGame
         while(!response.equals("X"))
         {
             if(response.equals("N"))
-            {                
+            {
+                System.out.println("");
+                
                 Game game = new Game();
                 game.newGame();
+                game.play();
+                
                 break;
             }
             else
             {
                 System.out.println("I'm sorry, that's not a valid response.");
+                System.out.println("");
                 System.out.println("What would you like to do?");
                 System.out.println("New Game (N), Exit (X)");
                 response = input.nextLine();

@@ -20,4 +20,10 @@ public class Round
     private Player activePlayer;
     private Player dealer;
     
+    public Round()
+    {
+        //Start in the preflop phase when a new Round is created
+        this.phase = Phase.PREFLOP;
+    }
+    
 }
