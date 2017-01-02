@@ -27,10 +27,9 @@ public class PokerGame
         while(!response.equals("X"))
         {
             if(response.equals("N"))
-            {
-                
+            {                
                 Game game = new Game();
-                game.play();
+                game.newGame();
                 break;
             }
             else
@@ -43,5 +42,4 @@ public class PokerGame
             }
         }
     }
-    
 }
