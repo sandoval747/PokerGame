@@ -1,5 +1,6 @@
 package pokergame;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,8 +20,8 @@ class Game
     
     public void newGame()
     {
-        int numPlayers;
-        int startingBank;
+        int numPlayers = 0;
+        int startingBank = 0;
         Scanner input = new Scanner(System.in);
         String response;
         boolean isValidResponse;
@@ -79,6 +80,18 @@ class Game
         }
         
         //Add players to ArrayList of players
+        
+        for(int i = 0; i < numPlayers; i++)
+        {
+            System.out.println("Player " + i + ", what is your name?");
+            response = input.nextLine();
+            
+            Player player = new Player(response, startingBank);
+            players.add(player);
+            
+            System.out.println("Welcome to the game, " + player.getName());
+            System.out.println("");
+        }
     }
     
     private void rejectNonIntegerMessage()
@@ -92,5 +105,37 @@ class Game
     {
         System.out.println("You started a new Game.");
         System.out.println("");
+        
+        ArrayDeque<Player> dealerRotation = new ArrayDeque<Player>();
+        for(Player player: players)
+        {
+            dealerRotation.add(player);
+        }
+        
+        while(players.size() > 1)
+        {
+            Player dealer = dealerRotation.poll();
+            dealerRotation.add(dealer);
+            
+            round = new Round(players, dealer);            
+            players = round.play();
+            
+            eliminatePlayers();
+
+        }
+        
+       
     }
+    
+    private void eliminatePlayers()
+    {
+        for(Player player : players)
+        {
+            if(player.getBank() <= 0)
+            {
+                players.remove(player);
+            }
+        }
+    }
+    
 }
